@@ -7,13 +7,12 @@ function Qna(Q, A) {
   this.A = A;
 }
 
-// arrays used to contain all of our player objects
+//contains usermade Q&As
 var flashCard = [];
 
-// recursive function which will allow the user to create 5 starting players and
-// 3 substitution players and then will print each players stats afterwards
+// recursive function which will allow the user to create flashCards
 var createQna = function() {
-  // if the length of the team array is 8 or higher, no more questions will be asked
+  // if the length of the flashCard array is 8 or higher, user will no longer be prompted to add Q&As
   if (flashCard < 8) {
     console.log("\nNew Flashcard!\n");
     inquirer.prompt([
@@ -28,20 +27,19 @@ var createQna = function() {
       // runs the constructor and places the new player object into the variable
       // player. turns the offense and defense variables into integers as well with parseInt
       var qna = new Qna(answers.Q, answers.A);
-      // adds a player to the starters array if there are less than five player
-      // objects in it. otherwise adds the newest player object to the subs array
-      if (flashCard.length < 5) {
+     //adds Q&As to flashCard array
+      if (flashCard.length < 8) {
         flashCard.push(Qna);
         console.log("New question added to your flashcard queue!");
       }
       else{
-      // runs the createPlayer function once more
+     //creates new flashcards
       createQna();
   }
     });
   }
   else {
-    // starts first round
+//meant to start Q&A "study"
     studyTime(0);
   }
 };
@@ -49,9 +47,16 @@ var createQna = function() {
 function studyTime() {
 for (var i = 0; i < flashCard.length; i++){
 if (flashCard.length<5){
-	console.log("Study time!")
+	inquirer.prompt([
+      {
+        name: "name",
+        message: "What question would you like to ask?: "
+      }, {
+        name: "position",
+        message: "What is the answer?: "
+      },
 }
 }
 };
-// calls the function createPlayer() to start the code
+//create new flashcards until limit is hit
 createQna();
