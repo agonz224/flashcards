@@ -7,7 +7,7 @@ function Qna(Q, A) {
   this.A = A;
 }
 
-//contains usermade Q&As
+//contains usermade Q&A
 var flashCard = [];
 
 // recursive function which will allow the user to create flashCards
@@ -46,16 +46,7 @@ var createQna = function() {
 
 function studyTime() {
 for (var i = 0; i < flashCard.length; i++){
-if (flashCard.length<5){
-	inquirer.prompt([
-      {
-        name: "name",
-        message: "What question would you like to ask?: "
-      }, {
-        name: "position",
-        message: "What is the answer?: "
-      },
-}
+
 }
 };
 //create new flashcards until limit is hit
